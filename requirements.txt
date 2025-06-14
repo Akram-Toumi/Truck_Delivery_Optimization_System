@@ -1,0 +1,7 @@
+pandas
+streamlit
+numpy
+matplotlib
+seaborn
+dataclasses
+typing
