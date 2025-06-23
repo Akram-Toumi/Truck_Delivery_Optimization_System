@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_01fa452dde82e5b9ed6564778198518a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style="position: fixed; top: 50px; right: 50px; width: 350px; height: auto; 
+                    background-color: white; border: 2px solid grey; z-index: 9999; 
+                    font-size: 12px; padding: 20px; border-radius: 5px; box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                    max-height: 80vh; overflow-y: auto;">
+        <h3 style="margin-top: 0; color: #333;">Monthly Summary - June 2025</h3>
+        
+        <div style="background-color: #f0f0f0; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+            <h4 style="margin: 0 0 10px 0; color: #666;">Overall Statistics</h4>
+            <div><b>Total Days:</b> 30</div>
+            <div><b>Total Deliveries:</b> 519</div>
+            <div><b>Total Distance:</b> 33651.0 km</div>
+            <div><b>Total Weight:</b> 100,100 kg</div>
+            <div><b>Avg Distance/Day:</b> 1121.7 km</div>
+        </div>
+        
+        <h4 style="margin: 15px 0 10px 0; color: #666;">Truck Performance</h4>
+        
+            <div style="margin: 10px 0; padding: 8px; border-left: 4px solid #FF0000; background-color: #f9f9f9;">
+                <b>Truck 1</b><br>
+                <div style="font-size: 11px; margin-top: 5px;">
+                    Routes: 30 (Min: 20)<br>
+                    Deliveries: 129<br>
+                    Distance: 8650.6 km<br>
+                    Avg/Route: 288.4 km<br>
+                    Weight: 25,800 kg
+                </div>
+            </div>
+            
+            <div style="margin: 10px 0; padding: 8px; border-left: 4px solid #0000FF; background-color: #f9f9f9;">
+                <b>Truck 2</b><br>
+                <div style="font-size: 11px; margin-top: 5px;">
+                    Routes: 30 (Min: 20)<br>
+                    Deliveries: 138<br>
+                    Distance: 8262.4 km<br>
+                    Avg/Route: 275.4 km<br>
+                    Weight: 23,600 kg
+                </div>
+            </div>
+            
+            <div style="margin: 10px 0; padding: 8px; border-left: 4px solid #00FF00; background-color: #f9f9f9;">
+                <b>Truck 3</b><br>
+                <div style="font-size: 11px; margin-top: 5px;">
+                    Routes: 30 (Min: 20)<br>
+                    Deliveries: 129<br>
+                    Distance: 8647.7 km<br>
+                    Avg/Route: 288.3 km<br>
+                    Weight: 26,500 kg
+                </div>
+            </div>
+            
+            <div style="margin: 10px 0; padding: 8px; border-left: 4px solid #800080; background-color: #f9f9f9;">
+                <b>Truck 4</b><br>
+                <div style="font-size: 11px; margin-top: 5px;">
+                    Routes: 30 (Min: 20)<br>
+                    Deliveries: 123<br>
+                    Distance: 8090.4 km<br>
+                    Avg/Route: 269.7 km<br>
+                    Weight: 24,200 kg
+                </div>
+            </div>
+            
+            <div style="margin: 15px 0 10px 0; padding: 10px; background-color: #e8f4f8; border-radius: 5px;">
+                <h4 style="margin: 0 0 8px 0; color: #2c5282;">Workload Balance</h4>
+                <div style="font-size: 11px;">
+                    Distance Range: 8090.4 - 8650.6 km<br>
+                    Balance Score: 93.5% (Higher is better)<br>
+                    <em>Multinomial distribution used for load balancing</em>
+                </div>
+            </div>
+            </div>
+    
+            <div class="folium-map" id="map_01fa452dde82e5b9ed6564778198518a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_01fa452dde82e5b9ed6564778198518a = L.map(
+                "map_01fa452dde82e5b9ed6564778198518a",
+                {
+                    center: [35.034976, 9.479492],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5e0d24e6499407120050295416325652 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5e0d24e6499407120050295416325652.addTo(map_01fa452dde82e5b9ed6564778198518a);
+        
+    
+            var tile_layer_edaed274279f0367d7aa34354eac9a74 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_edaed274279f0367d7aa34354eac9a74.addTo(map_01fa452dde82e5b9ed6564778198518a);
+        
+    
+            var marker_04bf17ed9965adb43d148e2fff2f9112 = L.marker(
+                [35.034976, 9.479492],
+                {
+}
+            ).addTo(map_01fa452dde82e5b9ed6564778198518a);
+        
+    
+            var icon_1a6ecafe90bd31bbbc57109e4481df3e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_005494c7af5b1ae42f8e2a90abc17615 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a4567dec78e8c2eab580a3feb433484a = $(`<div id="html_a4567dec78e8c2eab580a3feb433484a" style="width: 100.0%; height: 100.0%;"><b>Berlin Distribution Center</b><br>Monthly Summary: June 2025</div>`)[0];
+                popup_005494c7af5b1ae42f8e2a90abc17615.setContent(html_a4567dec78e8c2eab580a3feb433484a);
+            
+        
+
+        marker_04bf17ed9965adb43d148e2fff2f9112.bindPopup(popup_005494c7af5b1ae42f8e2a90abc17615)
+        ;
+
+        
+    
+    
+            marker_04bf17ed9965adb43d148e2fff2f9112.bindTooltip(
+                `<div>
+                     Factory/Depot
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_04bf17ed9965adb43d148e2fff2f9112.setIcon(icon_1a6ecafe90bd31bbbc57109e4481df3e);
+            
+    
+            var layer_control_85b219d9866f4736a3fe573c9110ae6a_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_5e0d24e6499407120050295416325652,
+                    "Satellite" : tile_layer_edaed274279f0367d7aa34354eac9a74,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_85b219d9866f4736a3fe573c9110ae6a = L.control.layers(
+                layer_control_85b219d9866f4736a3fe573c9110ae6a_layers.base_layers,
+                layer_control_85b219d9866f4736a3fe573c9110ae6a_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_01fa452dde82e5b9ed6564778198518a);
+
+        
+</script>
+</html>
